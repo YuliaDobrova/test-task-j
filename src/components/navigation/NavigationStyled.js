@@ -1,6 +1,20 @@
 import styled from 'styled-components';
 
 export const NavigationStyled = styled.nav`
+  .schoolName {
+    position: absolute;
+    left: 170px;
+    top: 22px;
+    color: rgba(130, 130, 130, 1);
+  }
+  .schoolNameText {
+    width: 80px;
+    text-transform: uppercase;
+  }
+  /* .nearText {
+    margin-right: 50px;
+  } */
+
   .NavLinkList {
     display: flex;
     flex-direction: row;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../..//images/Book (64x64).png';
+import logo from '../../images/Book (64x64).png';
 import { LogoStyled } from './LogoStyled';
 
 const Logo = () => {

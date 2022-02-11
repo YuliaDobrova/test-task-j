@@ -1,11 +1,14 @@
 import React from 'react';
 import AppRouter from '../appRouter/AppRouter';
+import Container from '../container/Container';
 import { MainStyled } from './MainStyled';
 
 const Main = () => {
   return (
     <MainStyled>
-      <AppRouter />
+      <Container>
+        <AppRouter />
+      </Container>
     </MainStyled>
   );
 };

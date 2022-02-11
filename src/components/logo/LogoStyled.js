@@ -9,7 +9,8 @@ export const LogoStyled = styled.div`
     transition-duration: 2000ms;
     transition-property: initial;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  &:hover {
-  transform: scale(0.9);
-}
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
 `;
