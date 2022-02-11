@@ -5,6 +5,7 @@ import Loader from '../loader/Loader';
 import Filter from '../filter/Filter';
 import ExportButton from '../exportBtn/ExportButton';
 import { StudentsInfoStyled } from './StudentsInfoStyled';
+// import Table from '../table/Table';
 
 const StudentsInfo = () => {
   const [students, setStudents] = useState([]);
@@ -16,6 +17,10 @@ const StudentsInfo = () => {
     setisLoading(false);
   }, []);
 
+  // const colNames = ['Name', 'ID', 'Class', 'Av.Score,%', 'Av.Speed', 'Parents'];
+
+  // const { totalPages, data } = studentsData;
+  // console.log('data', data);
   return (
     <StudentsInfoStyled>
       {isLoading && <Loader />}
@@ -24,8 +29,15 @@ const StudentsInfo = () => {
         <Filter />
         <ExportButton />
       </div>
-      <div>Students data:{students}</div>
-      {/* {students && <div>{students}</div>} */}
+      {/* <Table list={data} colNames={colNames} /> */}
+
+      {students && (
+        <ul>
+          {students.map((student, index) => (
+            <li key={index}>{student.name}</li>
+          ))}
+        </ul>
+      )}
     </StudentsInfoStyled>
   );
 };
