@@ -5,7 +5,8 @@ import useFetching from '../../hooks/useFetching';
 import Loader from '../loader/Loader';
 import Filter from '../filter/Filter';
 import ExportButton from '../exportBtn/ExportButton';
-import Table from '../table/Table';
+import StudentsTable from '../table/studentsTable/StudentsTable';
+// import Table from '../table/Table';
 import { StudentsInfoStyled } from './StudentsInfoStyled';
 
 const StudentsInfo = () => {
@@ -37,7 +38,8 @@ const StudentsInfo = () => {
           <Loader />
         </div>
       ) : (
-        <Table students={students} />
+        <StudentsTable students={students} />
+        // <Table students={students} />
       )}
     </StudentsInfoStyled>
   );

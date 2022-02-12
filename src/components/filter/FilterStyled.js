@@ -15,6 +15,7 @@ export const FilterStyled = styled.label`
     }
     &::placeholder {
       color: rgba(192, 192, 192, 1);
+      font-size: 14px;
       /* color: rgba(166, 25, 46, 1); */
     }
   }

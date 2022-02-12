@@ -26,4 +26,13 @@ export const IconTriangleStyled = styled.div`
       fill: rgb(166, 25, 46);
     }
   }
+  .iconTriangle.nearParentsText {
+    position: absolute;
+    left: 375px;
+    /* right: 20px; */
+    fill: rgba(192, 192, 192, 1);
+    &:hover {
+      fill: rgb(166, 25, 46);
+    }
+  }
 `;
