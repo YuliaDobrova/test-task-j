@@ -1,9 +1,10 @@
 import React from 'react';
+import '../index.css';
 
 const AnalyticsPage = () => {
   return (
     <div>
-      <h1>Analytics Page</h1>
+      <h1 className="PageTitle">Analytics Page</h1>
     </div>
   );
 };

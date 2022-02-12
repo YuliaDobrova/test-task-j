@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
 import { fetchStudentsData } from '../../services/Api';
+import useFetching from '../../hooks/useFetching';
 import Loader from '../loader/Loader';
+// import Table from '../table/Table';
 import Filter from '../filter/Filter';
 import ExportButton from '../exportBtn/ExportButton';
 import { StudentsInfoStyled } from './StudentsInfoStyled';
-// import Table from '../table/Table';
 
 const StudentsInfo = () => {
   const [students, setStudents] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
+  const [page] = useState(1);
+  const [limit] = useState(5);
+
+  const [fetchStudents, isLoading, error] = useFetching(async (limit, page) => {
+    const response = await fetchStudentsData(limit, page);
+    setStudents(response);
+  });
 
   useEffect(() => {
-    setisLoading(true);
-    fetchStudentsData().then(results => setStudents(results));
-    setisLoading(false);
-  }, []);
+    fetchStudents(limit, page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, limit]);
 
-  // const colNames = ['Name', 'ID', 'Class', 'Av.Score,%', 'Av.Speed', 'Parents'];
-
-  // const { totalPages, data } = studentsData;
-  // console.log('data', data);
   return (
     <StudentsInfoStyled>
-      {isLoading && <Loader />}
       <div className="StudentsInfoWrapper">
         <h1 className="StudentsInfoTitle">Students</h1>
         <Filter />
@@ -31,7 +32,14 @@ const StudentsInfo = () => {
       </div>
       {/* <Table list={data} colNames={colNames} /> */}
 
-      {students && (
+      {error && <h1>Error:${error}</h1>}
+      {isLoading ? (
+        <>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
+            <Loader />
+          </div>
+        </>
+      ) : (
         <ul>
           {students.map((student, index) => (
             <li key={index}>{student.name}</li>

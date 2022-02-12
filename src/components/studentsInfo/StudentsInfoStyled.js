@@ -13,6 +13,7 @@ export const StudentsInfoStyled = styled.div`
     font-weight: bold;
     font-size: 20px;
     line-height: 24px;
+    margin-top: 12px;
     text-transform: uppercase;
     color: rgba(91, 91, 91, 1);
   }

@@ -3,7 +3,7 @@ import React from 'react';
 const GradebooksPage = () => {
   return (
     <div>
-      <h1>Gradebooks Page</h1>
+      <h1 className="PageTitle">Gradebooks Page</h1>
     </div>
   );
 };
