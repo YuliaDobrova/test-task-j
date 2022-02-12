@@ -6,8 +6,6 @@ import SubHeader from './subheader/SubHeader';
 import Main from './main/Main';
 import './App.css';
 
-// import '../styles/common.scss';
-
 const App = () => {
   return (
     <>

@@ -2,4 +2,4 @@
 
 ## Students Gradebook App
 
-Endpoint to get data: [Link](https://test-task-j.herokuapp.com/data).
+Endpoint to get data: [Link](https://test-task-j.herokuapp.com/data?page=1&size=10).

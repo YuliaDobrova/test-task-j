@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { fetchStudentsData } from '../../services/Api';
 import useFetching from '../../hooks/useFetching';
 import Loader from '../loader/Loader';
-// import Table from '../table/Table';
 import Filter from '../filter/Filter';
 import ExportButton from '../exportBtn/ExportButton';
+import Table from '../table/Table';
 import { StudentsInfoStyled } from './StudentsInfoStyled';
 
 const StudentsInfo = () => {
@@ -30,24 +30,23 @@ const StudentsInfo = () => {
         <Filter />
         <ExportButton />
       </div>
-      {/* <Table list={data} colNames={colNames} /> */}
 
       {error && <h1>Error:${error}</h1>}
       {isLoading ? (
-        <>
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
-            <Loader />
-          </div>
-        </>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
+          <Loader />
+        </div>
       ) : (
-        <ul>
-          {students.map((student, index) => (
-            <li key={index}>{student.name}</li>
-          ))}
-        </ul>
+        <Table students={students} />
       )}
     </StudentsInfoStyled>
   );
 };
 
 export default StudentsInfo;
+
+// <ul>
+//   {students.map((student, index) => (
+//     <li key={index}>{student.name}</li>
+//   ))}
+// </ul>

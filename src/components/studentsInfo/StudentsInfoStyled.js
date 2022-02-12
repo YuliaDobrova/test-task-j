@@ -5,6 +5,7 @@ export const StudentsInfoStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
   }
 
   .StudentsInfoTitle {
