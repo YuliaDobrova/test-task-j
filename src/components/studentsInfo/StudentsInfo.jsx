@@ -9,25 +9,44 @@ import StudentsTable from '../table/studentsTable/StudentsTable';
 import { StudentsInfoStyled } from './StudentsInfoStyled';
 
 const StudentsInfo = () => {
-  const [students, setStudents] = useState([]);
-  const [filter, setFilter] = useState('');
-  const [totalPages, setTotalPages] = useState(0);
+  const [result, setResult] = useState({
+    students: [],
+    totalPages: 0,
+  });
+  const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [search, setSearch] = useState('');
+  const [sort, setSort] = useState({
+    sortBy: '',
+    sortDir: 1,
+  });
 
-  const getPageCount = (totalCount, limit) => {
-    return Math.ceil(totalCount / limit);
+  const changeSort = sortBy => {
+    if (sort.sortBy !== sortBy) {
+      setSort({ sortBy, sortDir: 1 });
+    } else {
+      const newSortDir = sort.sortDir === 1 ? -1 : 1;
+      setSort({ sortBy, sortDir: newSortDir });
+    }
   };
 
   const [fetchStudents, isStudentsDataLoading, errorStudentsData] = useFetching(
     async (limit, page) => {
-      const response = await fetchStudentsData(limit, page);
-      setStudents(response);
-      const totalCount = response;
-      setTotalPages(getPageCount(totalCount, limit));
+      const { sortBy, sortDir } = sort;
+      const { data, totalPages } = await fetchStudentsData({
+        limit,
+        page,
+        sortBy,
+        sortDir,
+        search,
+      });
+      setResult({
+        students: data,
+        totalPages,
+      });
     },
   );
-
+  // console.log('render');
   // const [fetchStudentsByQuery, isStudentsByQueryLoading, errorStudentsByQuery] = useFetching(
   //   async query => {
   //     const response = await fetchStudentsByQuery(query);
@@ -39,18 +58,22 @@ const StudentsInfo = () => {
   useEffect(() => {
     fetchStudents(limit, page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, limit]);
+  }, [page, limit, sort, search]);
 
-  const onChangePage = page => {
-    setPage(page);
-    fetchStudents(limit, page);
+  const onChangePage = value => {
+    const newValue = page + value;
+    // console.log('newValue', newValue);
+    if (newValue === 0 || newValue > result.totalPages) {
+      return;
+    }
+    setPage(newValue);
   };
 
   return (
     <StudentsInfoStyled>
       <div className="StudentsInfoWrapper">
         <h1 className="StudentsInfoTitle">Students</h1>
-        <Filter filter={filter} setFilter={setFilter} />
+        <Filter search={search} setSearch={setSearch} />
         <ExportButton />
       </div>
 
@@ -63,12 +86,13 @@ const StudentsInfo = () => {
         </div>
       ) : (
         <StudentsTable
-          students={students}
+          students={result.students}
           page={page}
-          totalPages={totalPages}
+          totalPages={result.totalPages}
           onChangePage={onChangePage}
           limit={limit}
           setLimit={setLimit}
+          changeSort={changeSort}
         />
       )}
     </StudentsInfoStyled>

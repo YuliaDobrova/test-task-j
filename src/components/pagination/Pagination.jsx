@@ -1,49 +1,45 @@
 import React from 'react';
+import Select from 'react-select';
+
 import sprite from '../../images/sprite.svg';
-import { usePagination } from '../../hooks/usePagination';
 import IconTriangle from '../iconTriangle/IconTriangle';
 import { PaginationStyled } from './PaginationStyled';
-// import { getPagesArray } from '../../../utils/pages';
+
+
+const options = [
+  { value: 5, label: '5' },
+  { value: 10, label: '10' },
+];
 
 const Pagination = ({ totalPages, page, onChangePage, limit, setLimit, onOpenPages }) => {
-  // let pagesArray = getPagesArray(totalPages);
-  let pagesArray = usePagination(totalPages);
   return (
     <PaginationStyled>
       <p className="PaginationText1">Rows per page:</p>
-      {pagesArray.map(p => (
-        <span
-          onClick={() => onChangePage(p)}
-          key={p}
-          className={page === p ? `pageBtnCurrent` : `pageBtn`}
-        >
-          {p}
-        </span>
-      ))}
       <div className="PaginationSelectWrapper">
-        <select
+        <Select options={options} onChange={({ value }) => setLimit(value)} />
+        {/* <select
           className="PaginationSelect select-arrow-delete"
-          value={limit}
+          // value={limit}
           onChange={value => setLimit(value)}
-          // defaultValue="Number of posts on a page"
-
-          // options={[
-          //   { value: 10, name: '10' },
-          //   { value: 20, name: '20' },
-          //   { value: 100, name: 'Show all' },
-          // ]}
+          defaultValue="5"
         >
-          <option className="PaginationSelectOption">10</option>
-          <option className="PaginationSelectOption">20</option>
-        </select>
+          <option value={5} className="PaginationSelectOption">
+            5
+          </option>
+          <option value={10} className="PaginationSelectOption">
+            10
+          </option>
+        </select> */}
         <IconTriangle onOpenPages={onOpenPages} additionalClassName="nearPagesSelect" />
       </div>
-      <p className="PaginationText2">21-30 of 100</p>
+      <p className="PaginationText2">
+        {(page - 1) * limit + 1}-{page * limit} of {totalPages * limit}
+      </p>
       <div className="PageArrowWrapper">
-        <svg className="PageArrowLeft" width="10" height="16" onClick={() => {}}>
+        <svg className="PageArrowLeft" width="10" height="16" onClick={() => onChangePage(-1)}>
           <use href={sprite + '#icon-arrow-left'}></use>
         </svg>
-        <svg className="PageArrowRight" width="10" height="16" onClick={() => {}}>
+        <svg className="PageArrowRight" width="10" height="16" onClick={() => onChangePage(1)}>
           <use href={sprite + '#icon-arrow-right'}></use>
         </svg>
       </div>

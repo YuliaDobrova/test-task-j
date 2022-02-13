@@ -28,7 +28,7 @@ export const IconTriangleStyled = styled.div`
   }
   .iconTriangle.nearParentsText {
     position: absolute;
-    left: 375px;
+    left: -10px;
     /* right: 20px; */
     fill: rgba(192, 192, 192, 1);
     &:hover {

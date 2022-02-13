@@ -36,6 +36,18 @@ export const StudentsTableStyled = styled.div`
     /* width: 100%; */
     color: rgba(130, 130, 130, 1);
   }
+  .sort {
+    cursor: pointer;
+    &:hover {
+      color: rgba(166, 25, 46, 1);
+    }
+  }
+
+  .TableDataTriagleWrapper {
+    position: relative;
+    width: 20px;
+  }
+
   .disabledColor {
     color: rgba(192, 192, 192, 1);
   }

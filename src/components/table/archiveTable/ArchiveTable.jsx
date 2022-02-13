@@ -1,8 +1,10 @@
 import React from 'react';
 import IconTriangle from '../../iconTriangle/IconTriangle';
 import '../studentsTable/StudentsTableStyled';
+import { nanoid } from 'nanoid';
 
 const ArchiveTable = ({ students, columnNames }) => {
+  const checkboxId = nanoid();
   return (
     <table className="Table" cellSpacing="0" style={{ marginTop: 5 }}>
       <thead className="TableHeading">
@@ -23,8 +25,8 @@ const ArchiveTable = ({ students, columnNames }) => {
             index < 2 && (
               <tr className="TableBodyRow" key={index}>
                 <td className="TableData">
-                  <input className="checkbox" id="TableDataCheckbox" type="checkbox" />
-                  <label htmlFor="TableDataCheckbox" />
+                  <input className="checkbox" id={checkboxId} type="checkbox" />
+                  <label htmlFor={checkboxId} />
                 </td>
                 <td className="TableData disabledColor">{Object.values(student)[0]}</td>
                 <td className="TableData disabledColor">{Object.values(student)[1]}</td>
