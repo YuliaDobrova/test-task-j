@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './AccordionItem.css';
+import AccordionItemData from '../accordionItemData/AccordionItemData.jsx';
+import { AccordionItemStyled } from './AccordionItemStyled.js';
 
 const AccordionItem = ({ title, description }) => {
   const [open, setOpen] = useState(false);
@@ -12,18 +13,18 @@ const AccordionItem = ({ title, description }) => {
   const contentClassName = !open ? 'content' : `content is-expanded`;
 
   return (
-    <div className="container">
+    <AccordionItemStyled>
       <div className="accordion">
         <div className="accordion-item" onClick={handleClick}>
-          <p className={titleClassName}>{title}</p>
+          <p className={titleClassName}>{title}1</p>
           {open && (
             <div className={contentClassName}>
-              <p className="description">{description}</p>
+              <AccordionItemData />
             </div>
           )}
         </div>
       </div>
-    </div>
+    </AccordionItemStyled>
   );
 };
 

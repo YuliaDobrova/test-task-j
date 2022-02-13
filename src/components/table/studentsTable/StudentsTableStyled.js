@@ -23,6 +23,8 @@ export const StudentsTableStyled = styled.div`
     border-bottom: 2px solid rgba(192, 192, 192, 1);
   }
   .TableBodyRow {
+    position: relative;
+
     height: 48px;
   }
   .TableData {
@@ -37,16 +39,19 @@ export const StudentsTableStyled = styled.div`
   .disabledColor {
     color: rgba(192, 192, 192, 1);
   }
-
+  /* ===== Accordion ===== */
   .AccordionWrapper {
-    position: relative;
-  }
-  .Accordion {
     position: absolute;
-    top: 15px;
-    left: 500px;
+    top: 0;
+    left: -76px;
+    width: 1343px;
+    height: 422px;
+
+    /* top: 48px; */
+    /* left: -13px; */
   }
 
+  /* ====================== */
   tbody tr:nth-child(odd) {
     background-color: rgba(255, 255, 255, 1);
   }
@@ -94,7 +99,7 @@ export const StudentsTableStyled = styled.div`
   }
   /* стили для чекбокса, находящегося в состоянии disabled */
   .custom-checkbox:disabled + label::before {
-    background-color: #e9ecef;
+    background-color: rgba(242, 242, 242, 1);
   }
 
   /* === COLORS === */

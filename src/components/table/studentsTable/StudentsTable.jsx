@@ -3,10 +3,10 @@ import React from 'react';
 import ArchiveTable from '../archiveTable/ArchiveTable';
 import IconTriangle from '../../iconTriangle/IconTriangle';
 import { StudentsTableStyled } from './StudentsTableStyled';
-// import AccordionItem from '../../accordionItem/AccordionItem';
+import AccordionItem from '../../accordion/accordionItem/AccordionItem';
 
 const StudentsTable = ({ students }) => {
-  const openDropdown = () => {};
+  const openAccordion = () => {};
 
   const columnNames = [
     { field: 'name', headerName: 'Name' },
@@ -38,13 +38,6 @@ const StudentsTable = ({ students }) => {
             <tbody className="TableBody">
               {students.map((student, index) => (
                 <tr className="TableBodyRow" key={index}>
-                  {/* <td>{console.log('Object.values(student)', Object.values(student))}</td> */}
-                  {/* <td>{Object.values(student)[0]}</td>
-                <td>{Object.values(student)[1]}</td>
-                <td>{Object.values(student)[2]}</td>
-                <td>{Object.values(student)[3]}</td>
-                <td>{Object.values(student)[4]}</td>
-                <td>{Object.values(student)[5]}</td> */}
                   <td className="TableData">
                     <input className="checkbox" id="TableDataCheckbox" type="checkbox" />
                     <label htmlFor="TableDataCheckbox" />
@@ -82,20 +75,16 @@ const StudentsTable = ({ students }) => {
                         idx === 0 ? `${parent}, ` : `${parent}`,
                       )}
                       <IconTriangle
-                        openDropdown={openDropdown}
+                        openAccordion={openAccordion}
                         additionalClassName="nearParentsText"
                       />
                     </td>
                   )}
+                  <td className="TableData AccordionWrapper">
+                    <AccordionItem />
+                  </td>
                 </tr>
               ))}
-              {/* <tr className="TableBodyRow">
-                <td className="TableData AccordionWrapper">
-                  <div className="Accordion">
-                    <AccordionItem />
-                  </div>
-                </td>
-              </tr> */}
             </tbody>
           </table>
           <ArchiveTable students={students} columnNames={columnNames} />
