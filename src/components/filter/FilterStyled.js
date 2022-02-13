@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FilterStyled = styled.label`
   position: relative;
-  .Filter {
+  .FilterQuery {
     padding-left: 12px;
     margin-top: 8px;
     width: 499px;
@@ -19,6 +19,7 @@ export const FilterStyled = styled.label`
       /* color: rgba(166, 25, 46, 1); */
     }
   }
+
   .SearchIcon {
     position: absolute;
     top: 40%;

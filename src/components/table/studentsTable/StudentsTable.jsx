@@ -1,11 +1,12 @@
 import React from 'react';
 
-import ArchiveTable from '../archiveTable/ArchiveTable';
 import IconTriangle from '../../iconTriangle/IconTriangle';
-import { StudentsTableStyled } from './StudentsTableStyled';
 import AccordionItem from '../../accordion/accordionItem/AccordionItem';
+import ArchiveTable from '../archiveTable/ArchiveTable';
+import Pagination from '../../pagination/Pagination';
+import { StudentsTableStyled } from './StudentsTableStyled';
 
-const StudentsTable = ({ students }) => {
+const StudentsTable = ({ students, page, onChangePage, totalPages, limit, setLimit }) => {
   const openAccordion = () => {};
 
   const columnNames = [
@@ -88,6 +89,13 @@ const StudentsTable = ({ students }) => {
             </tbody>
           </table>
           <ArchiveTable students={students} columnNames={columnNames} />
+          <Pagination
+            page={page}
+            onChangePage={onChangePage}
+            totalPages={totalPages}
+            limit={limit}
+            setLimit={setLimit}
+          />
         </>
       )}
     </StudentsTableStyled>

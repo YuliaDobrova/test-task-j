@@ -35,4 +35,14 @@ export const IconTriangleStyled = styled.div`
       fill: rgb(166, 25, 46);
     }
   }
+  .iconTriangle.nearPagesSelect {
+    position: absolute;
+    /* top: 0; */
+    left: 25px;
+    /* right: 25px; */
+    fill: rgba(119, 119, 119, 1);
+    &:hover {
+      fill: rgb(166, 25, 46);
+    }
+  }
 `;
