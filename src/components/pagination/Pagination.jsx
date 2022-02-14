@@ -14,7 +14,6 @@ const style = {
   control: base => ({
     ...base,
     border: 0,
-    // This line disable the blue border
     boxShadow: 'none',
   }),
 };

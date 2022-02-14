@@ -49,19 +49,15 @@ export const StudentsTableStyled = styled.div`
   .disabledColor {
     color: rgba(192, 192, 192, 1);
   }
-  /* ===== Accordion ===== */
+
   .AccordionWrapper {
     position: absolute;
     top: 0;
     left: -76px;
     width: 1343px;
     height: 422px;
-
-    /* top: 48px; */
-    /* left: -13px; */
   }
 
-  /* ====================== */
   tbody tr:nth-child(odd) {
     background-color: rgba(255, 255, 255, 1);
   }

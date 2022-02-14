@@ -11,9 +11,6 @@ export const NavigationStyled = styled.nav`
     width: 80px;
     text-transform: uppercase;
   }
-  /* .nearText {
-    margin-right: 50px;
-  } */
 
   .NavLinkList {
     display: flex;
@@ -46,7 +43,6 @@ export const NavigationStyled = styled.nav`
     text-decoration: none;
     background-color: rgba(166, 25, 46, 1);
     padding: 6px 12px;
-    /* height: 32px; */
     font-size: 14px;
   }
 `;
