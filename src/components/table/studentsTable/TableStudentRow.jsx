@@ -11,15 +11,26 @@ const getColor = score => {
   return scoreColor[scoreValue];
 };
 
-const TableStudentRow = ({ name, id, class: studentClass, score, speed, parents, tests }) => {
+const TableStudentRow = ({
+  name,
+  id,
+  class: studentClass,
+  score,
+  speed,
+  parents,
+  tests,
+  toggleSelectStudent,
+  selected = false,
+}) => {
   const [collapse, setCollapse] = useState(false);
   const toggleCollapse = () => {
     setCollapse(!collapse);
   };
 
-  const [selected, setSelected] = useState(false);
+  // const [selected, setSelected] = useState(false);
   const toggleCheckbox = () => {
-    setSelected(!selected);
+    // setSelected(!selected);
+    toggleSelectStudent(id, !selected);
   };
 
   const checkboxId = nanoid();
@@ -27,7 +38,13 @@ const TableStudentRow = ({ name, id, class: studentClass, score, speed, parents,
     <>
       <tr className={`TableBodyRow ${selected ? 'selectedRow' : ''}`}>
         <td className="TableData">
-          <input className="checkbox" id={checkboxId} type="checkbox" onChange={toggleCheckbox} />
+          <input
+            className="checkbox"
+            id={checkboxId}
+            type="checkbox"
+            checked={selected}
+            onChange={toggleCheckbox}
+          />
           <label htmlFor={checkboxId} />
         </td>
 

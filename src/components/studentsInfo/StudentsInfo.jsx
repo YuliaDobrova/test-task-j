@@ -6,6 +6,7 @@ import Filter from '../search/Search';
 import ExportButton from '../exportBtn/ExportButton';
 import StudentsTable from '../table/studentsTable/StudentsTable';
 import { StudentsInfoStyled } from './StudentsInfoStyled';
+import SubHeaderCollapse from '../subHeaderCollapse/SubHeaderCollapse';
 
 const StudentsInfo = () => {
   const [result, setResult] = useState({
@@ -68,13 +69,42 @@ const StudentsInfo = () => {
     setPage(newValue);
   };
 
+  const toggleSelectStudent = (id, selected) => {
+    const newStudents = result.students.map(item => {
+      if (item.id === id) {
+        return { ...item, selected };
+      }
+      return item;
+    });
+    setResult({ ...result, students: newStudents });
+  };
+
+  const selectStudents = result.students.filter(student => student.selected);
+
+  const cancelSelected = () => {
+    const newStudents = result.students.map(item => {
+      return { ...item, selected: false };
+    });
+    setResult({ ...result, students: newStudents });
+  };
+
   return (
     <StudentsInfoStyled>
-      <div className="StudentsInfoWrapper">
+      {selectStudents.length > 0 ? (
+        <SubHeaderCollapse selectStudents={selectStudents} cancelSelected={cancelSelected} />
+      ) : (
+        <div className="StudentsInfoWrapper">
+          <h1 className="StudentsInfoTitle">Students</h1>
+          <Filter search={search} setSearch={setSearch} />
+          <ExportButton />
+        </div>
+      )}
+      {/* <div className="StudentsInfoWrapper">
         <h1 className="StudentsInfoTitle">Students</h1>
         <Filter search={search} setSearch={setSearch} />
         <ExportButton />
       </div>
+<SubHeaderCollapse/> */}
 
       {errorStudentsData && (
         <h1 style={{ textAlign: 'center', color: 'red' }}>Error:{errorStudentsData}</h1>
@@ -92,6 +122,7 @@ const StudentsInfo = () => {
           limit={limit}
           setLimit={setLimit}
           changeSort={changeSort}
+          toggleSelectStudent={toggleSelectStudent}
         />
       )}
     </StudentsInfoStyled>

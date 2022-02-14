@@ -1,5 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 import { expectColor } from '../../../table/studentsTable/table-data';
 
@@ -13,48 +14,55 @@ const CollapseTableRow = ({
   concept,
   date,
   abcent,
+  absent,
   getColor,
 }) => {
   const checkboxId = nanoid();
+
+  const selected = typeof abcent === 'boolean' ? abcent : absent;
+
+  const fullClassName = selected ? 'CollapseTableData disabledColor' : 'CollapseTableData';
+
+  // console.log('abcent', abcent);
   return (
-    <>
-      {abcent ? (
-        <tr className="CollapseTableBodyRow">
-          <td className="CollapseTableData">{index + 1}.</td>
-          <td className="CollapseTableData disabledColor">{label}</td>
-          <td className="CollapseTableData disabledColor">{score}</td>
-          <td className="CollapseTableData disabledColor">{speed}</td>
-          <td className="CollapseTableData disabledColor">{total}</td>
-          <td className="CollapseTableData disabledColor">{expSpeed}</td>
-          <td className="CollapseTableData disabledColor">{concept}</td>
-          <td className="CollapseTableData disabledColor">{date}</td>
-          <td className="CollapseTableData">
-            <input className="checkbox checked" id={checkboxId} type="checkbox" checked />
-            <label htmlFor={checkboxId} />
-          </td>
-        </tr>
-      ) : (
-        <tr className="CollapseTableBodyRow">
-          <td className="CollapseTableData">{index + 1}.</td>
-          <td className="CollapseTableData">{label}</td>
-          <td className="CollapseTableData">
-            <span className={getColor(score)}>{score}</span>
-          </td>
-          <td className="CollapseTableData">
-            <span className={expectColor['Below Expected']}>{speed}</span>
-          </td>
-          <td className="CollapseTableData">{total}</td>
-          <td className="CollapseTableData">{expSpeed}</td>
-          <td className="CollapseTableData">{concept}</td>
-          <td className="CollapseTableData">{date}</td>
-          <td className="CollapseTableData">
-            <input className="checkbox" id={checkboxId} type="checkbox" />
-            <label htmlFor={checkboxId} />
-          </td>
-        </tr>
-      )}
-    </>
+    <tr className="CollapseTableBodyRow">
+      <td className="CollapseTableData">{index + 1}.</td>
+      <td className={fullClassName}>{label}</td>
+      <td className={fullClassName}>
+        <span className={getColor(score)}>{score}</span>
+      </td>
+      <td className={fullClassName}>
+        <span className={expectColor['Below Expected']}>{speed}</span>
+      </td>
+      <td className={fullClassName}>{total}</td>
+      <td className={fullClassName}>{expSpeed}</td>
+      <td className={fullClassName}>{concept}</td>
+      <td className={fullClassName}>{date}</td>
+      <td className="CollapseTableData">
+        <input
+          className="checkbox checked"
+          id={checkboxId}
+          type="checkbox"
+          defaultChecked={selected}
+        />
+        <label htmlFor={checkboxId} />
+      </td>
+    </tr>
   );
 };
 
 export default CollapseTableRow;
+
+CollapseTableRow.propTypes = {
+  index: PropTypes.number.isRequired,
+  label: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  speed: PropTypes.string.isRequired,
+  total: PropTypes.number.isRequired,
+  expSpeed: PropTypes.string.isRequired,
+  concept: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  abcent: PropTypes.bool,
+  absent: PropTypes.bool,
+  getColor: PropTypes.func,
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 import ArchiveTable from '../archiveTable/ArchiveTable';
 import Pagination from '../../pagination/Pagination';
@@ -15,6 +16,7 @@ const StudentsTable = ({
   limit,
   setLimit,
   changeSort,
+  toggleSelectStudent,
 }) => {
   const sortOptions = ['name', 'class', 'score', 'speed'];
   const sortTable = field => {
@@ -49,7 +51,11 @@ const StudentsTable = ({
             </thead>
             <tbody className="TableBody">
               {students.map((student, index) => (
-                <TableStudentRow key={index} {...student} />
+                <TableStudentRow
+                  key={index}
+                  {...student}
+                  toggleSelectStudent={toggleSelectStudent}
+                />
               ))}
             </tbody>
           </table>
@@ -69,3 +75,38 @@ const StudentsTable = ({
 };
 
 export default StudentsTable;
+
+StudentsTable.propTypes = {
+  students: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      class: PropTypes.string.isRequired,
+      score: PropTypes.string.isRequired,
+      speed: PropTypes.string.isRequired,
+      parents: PropTypes.arrayOf(PropTypes.string),
+      tests: PropTypes.arrayOf(
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          score: PropTypes.number.isRequired,
+          speed: PropTypes.string.isRequired,
+          total: PropTypes.number.isRequired,
+          expSpeed: PropTypes.string.isRequired,
+          concept: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired,
+          abcent: PropTypes.bool,
+          absent: PropTypes.bool,
+        }),
+      ),
+      toggleSelectStudent: PropTypes.func,
+      selected: PropTypes.bool,
+    }),
+  ),
+  page: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func,
+  totalPages: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  setLimit: PropTypes.func,
+  changeSort: PropTypes.func,
+  toggleSelectStudent: PropTypes.func,
+};

@@ -1,6 +1,5 @@
 import React from 'react';
 import IconTriangle from '../iconTriangle/IconTriangle';
-import SubHeaderCollapse from '../subHeaderCollapse/SubHeaderCollapse';
 import { SubHeaderStyled } from './SubHeaderStyled';
 
 const SubHeader = () => {
@@ -26,8 +25,6 @@ const SubHeader = () => {
         </ul>
         <div className="SubNavClearAllText">Clear All</div>
       </div>
-      {/* {selected && <SubHeaderCollapse />} */}
-      <SubHeaderCollapse />
     </SubHeaderStyled>
   );
 };
