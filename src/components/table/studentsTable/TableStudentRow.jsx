@@ -1,22 +1,9 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
+import { scoreColor, expectColor } from './table-data.js';
 import IconTriangle from '../../iconTriangle/IconTriangle';
-
-const scoreColor = {
-  '100%': 'blue',
-  '90%': 'blue',
-  '80%': 'green',
-  '70%': 'yellow',
-  '60%': 'yellow',
-  '50%': 'red',
-};
-
-const expectColor = {
-  'Below Expected': 'red',
-  'As Expected': 'green',
-  'Above Expected': 'blue',
-};
+import Collapse from '../../collapse/Collapse';
 
 const getColor = score => {
   const value = Math.floor(parseInt(score) / 10) * 10;
@@ -60,20 +47,14 @@ const TableStudentRow = ({ name, id, class: studentClass, score, speed, parents,
       {collapse && (
         <tr>
           <td colSpan="8">
-            <div>
-              {tests.map((test, idx) => (
-                <div key={idx}>
-                  <div>{test.label}</div>
-                  <div>{test.score}</div>
-                  <div>{test.speed}</div>
-                  <div>{test.total}</div>
-                  <div>{test.concept}</div>
-                  <div>{test.date}</div>
-                  <div>{test.abcent}</div>
-                </div>
-              ))}
-              <p>Info</p>
-            </div>
+            <Collapse
+              name={name}
+              id={id}
+              score={score}
+              speed={speed}
+              tests={tests}
+              getColor={getColor}
+            />
           </td>
         </tr>
       )}

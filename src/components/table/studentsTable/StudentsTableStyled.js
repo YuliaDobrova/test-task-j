@@ -3,9 +3,8 @@ import styled from 'styled-components';
 export const StudentsTableStyled = styled.div`
   .Table {
     color: rgba(130, 130, 130, 1);
-    width: 1200px;
+    width: 1300px;
     height: auto;
-    /* padding: 5px 10px; */
   }
   .TableHeading {
     height: 48px;
@@ -24,7 +23,6 @@ export const StudentsTableStyled = styled.div`
   }
   .TableBodyRow {
     position: relative;
-
     height: 48px;
   }
   .TableData {
@@ -33,7 +31,6 @@ export const StudentsTableStyled = styled.div`
     padding: 0;
     height: 100%;
     padding-left: 10px;
-    /* width: 100%; */
     color: rgba(130, 130, 130, 1);
   }
   .sort {
@@ -100,9 +97,10 @@ export const StudentsTableStyled = styled.div`
     background-size: 50% 50%;
   }
   .checkbox:checked + label::before {
-    border-color: #adb5bd;
-    background-color: #adb5bd;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    border-color: rgba(130, 130, 130, 1);
+    /* background-color: #adb5bd; */
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='000000' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
   }
 
   /* стили при наведении курсора на checkbox */

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const IconTriangleStyled = styled.div`
   display: inline;
+  cursor: pointer;
   .iconTriangle {
     position: absolute;
     top: 50%;
@@ -44,5 +45,13 @@ export const IconTriangleStyled = styled.div`
     &:hover {
       fill: rgb(166, 25, 46);
     }
+  }
+  .nearCollapseInfo {
+    position: static;
+    margin-left: 10px;
+    /* position: absolute; */
+    /* left: 120px; */
+    /* right: ; */
+    /* top: 5px; */
   }
 `;

@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 
 import ArchiveTable from '../archiveTable/ArchiveTable';
 import Pagination from '../../pagination/Pagination';
-import { columnNames } from './columnNames';
+import { columnNames } from './table-data.js';
 import { StudentsTableStyled } from './StudentsTableStyled';
 import TableStudentRow from './TableStudentRow';
 
