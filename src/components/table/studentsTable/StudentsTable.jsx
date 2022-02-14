@@ -54,6 +54,7 @@ const StudentsTable = ({
                 <TableStudentRow
                   key={index}
                   {...student}
+                  index={index}
                   toggleSelectStudent={toggleSelectStudent}
                 />
               ))}
@@ -76,6 +77,7 @@ const StudentsTable = ({
 
 export default StudentsTable;
 
+// import PropTypes from 'prop-types';
 StudentsTable.propTypes = {
   students: PropTypes.arrayOf(
     PropTypes.shape({

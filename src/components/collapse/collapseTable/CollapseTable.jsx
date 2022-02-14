@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { columnNames } from './collapse-table-data';
 import CollapseTableRow from './collapseTableRow/CollapseTableRow';
@@ -28,3 +29,20 @@ const CollapseTable = ({ tests, getColor }) => {
 };
 
 export default CollapseTable;
+
+CollapseTable.propTypes = {
+  tests: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      score: PropTypes.number.isRequired,
+      speed: PropTypes.string.isRequired,
+      total: PropTypes.number.isRequired,
+      expSpeed: PropTypes.string.isRequired,
+      concept: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      abcent: PropTypes.bool,
+      absent: PropTypes.bool,
+    }),
+  ),
+  getColor: PropTypes.func,
+};

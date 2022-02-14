@@ -3,13 +3,8 @@ import styled from 'styled-components';
 export const SubHeaderCollapseStyled = styled.div`
   height: 48px;
   background-color: rgba(192, 192, 192, 1);
-  /* position: absolute; */
-  /* top: 40px; */
-  /* left: 0; */
-  /* right: 0; */
-  /* z-index: 100; */
-  /* opacity: 0; */
-  /* display: none; */
+  /* width: 100vw; */
+
   .SubHeaderCollapseWrapper {
     height: 48px;
     display: flex;
@@ -29,8 +24,6 @@ export const SubHeaderCollapseStyled = styled.div`
   }
   .SubHeaderCollapseBtn {
     position: relative;
-    /* margin-top: 7px; */
-    /* margin-right: 133px; */
     height: 48px;
     width: 185px;
     text-align: end;

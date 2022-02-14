@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import IconTriangle from '../iconTriangle/IconTriangle';
 import CollapseTable from './collapseTable/CollapseTable';
@@ -105,3 +106,24 @@ const Collapse = ({ name, id, score, speed, tests, getColor }) => {
 };
 
 export default Collapse;
+
+Collapse.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  score: PropTypes.string.isRequired,
+  speed: PropTypes.string.isRequired,
+  tests: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      score: PropTypes.number.isRequired,
+      speed: PropTypes.string.isRequired,
+      total: PropTypes.number.isRequired,
+      expSpeed: PropTypes.string.isRequired,
+      concept: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      abcent: PropTypes.bool,
+      absent: PropTypes.bool,
+    }),
+  ),
+  getColor: PropTypes.func,
+};

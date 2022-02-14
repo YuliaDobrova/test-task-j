@@ -12,6 +12,7 @@ const getColor = score => {
 };
 
 const TableStudentRow = ({
+  index,
   name,
   id,
   class: studentClass,
@@ -27,10 +28,8 @@ const TableStudentRow = ({
     setCollapse(!collapse);
   };
 
-  // const [selected, setSelected] = useState(false);
   const toggleCheckbox = () => {
-    // setSelected(!selected);
-    toggleSelectStudent(id, !selected);
+    toggleSelectStudent(index, !selected);
   };
 
   const checkboxId = nanoid();

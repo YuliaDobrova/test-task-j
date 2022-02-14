@@ -7,6 +7,7 @@ import ExportButton from '../exportBtn/ExportButton';
 import StudentsTable from '../table/studentsTable/StudentsTable';
 import { StudentsInfoStyled } from './StudentsInfoStyled';
 import SubHeaderCollapse from '../subHeaderCollapse/SubHeaderCollapse';
+import Container from '../container/Container';
 
 const StudentsInfo = () => {
   const [result, setResult] = useState({
@@ -46,14 +47,6 @@ const StudentsInfo = () => {
       });
     },
   );
-  // console.log('render');
-  // const [fetchStudentsByQuery, isStudentsByQueryLoading, errorStudentsByQuery] = useFetching(
-  //   async query => {
-  //     const response = await fetchStudentsByQuery(query);
-  //     console.log('fetchStudentsByQuery response', response);
-  //     setStudents(response);
-  //   },
-  // );
 
   useEffect(() => {
     fetchStudents(limit, page);
@@ -62,16 +55,15 @@ const StudentsInfo = () => {
 
   const onChangePage = value => {
     const newValue = page + value;
-    // console.log('newValue', newValue);
     if (newValue === 0 || newValue > result.totalPages) {
       return;
     }
     setPage(newValue);
   };
 
-  const toggleSelectStudent = (id, selected) => {
-    const newStudents = result.students.map(item => {
-      if (item.id === id) {
+  const toggleSelectStudent = (index, selected) => {
+    const newStudents = result.students.map((item, idx) => {
+      if (idx === index) {
         return { ...item, selected };
       }
       return item;
@@ -93,18 +85,14 @@ const StudentsInfo = () => {
       {selectStudents.length > 0 ? (
         <SubHeaderCollapse selectStudents={selectStudents} cancelSelected={cancelSelected} />
       ) : (
-        <div className="StudentsInfoWrapper">
-          <h1 className="StudentsInfoTitle">Students</h1>
-          <Filter search={search} setSearch={setSearch} />
-          <ExportButton />
-        </div>
+        <Container>
+          <div className="StudentsInfoWrapper">
+            <h1 className="StudentsInfoTitle">Students</h1>
+            <Filter search={search} setSearch={setSearch} />
+            <ExportButton />
+          </div>
+        </Container>
       )}
-      {/* <div className="StudentsInfoWrapper">
-        <h1 className="StudentsInfoTitle">Students</h1>
-        <Filter search={search} setSearch={setSearch} />
-        <ExportButton />
-      </div>
-<SubHeaderCollapse/> */}
 
       {errorStudentsData && (
         <h1 style={{ textAlign: 'center', color: 'red' }}>Error:{errorStudentsData}</h1>
@@ -114,16 +102,18 @@ const StudentsInfo = () => {
           <Loader />
         </div>
       ) : (
-        <StudentsTable
-          students={result.students}
-          page={page}
-          totalPages={result.totalPages}
-          onChangePage={onChangePage}
-          limit={limit}
-          setLimit={setLimit}
-          changeSort={changeSort}
-          toggleSelectStudent={toggleSelectStudent}
-        />
+        <Container>
+          <StudentsTable
+            students={result.students}
+            page={page}
+            totalPages={result.totalPages}
+            onChangePage={onChangePage}
+            limit={limit}
+            setLimit={setLimit}
+            changeSort={changeSort}
+            toggleSelectStudent={toggleSelectStudent}
+          />
+        </Container>
       )}
     </StudentsInfoStyled>
   );
