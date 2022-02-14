@@ -7,7 +7,6 @@ import { columnNames } from './table-data.js';
 import { StudentsTableStyled } from './StudentsTableStyled';
 import TableStudentRow from './TableStudentRow';
 
-const sortOptions = ['name', 'class', 'score', 'speed'];
 const StudentsTable = ({
   students,
   page,
@@ -17,6 +16,7 @@ const StudentsTable = ({
   setLimit,
   changeSort,
 }) => {
+  const sortOptions = ['name', 'class', 'score', 'speed'];
   const sortTable = field => {
     if (sortOptions.includes(field)) {
       changeSort(field);

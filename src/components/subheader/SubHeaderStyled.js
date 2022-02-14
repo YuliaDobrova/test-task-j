@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
 export const SubHeaderStyled = styled.div`
-  height: 40px;
-  background-color: rgba(91, 91, 91, 1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  .SubHeaderWrapper {
+    height: 40px;
+    background-color: rgba(91, 91, 91, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .SubNavList {
     display: flex;
     justify-content: center;

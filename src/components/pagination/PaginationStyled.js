@@ -17,6 +17,7 @@ export const PaginationStyled = styled.div`
   }
   .PaginationSelectWrapper {
     position: relative;
+    cursor: pointer;
     width: 60px;
   }
   .PaginationSelect {
@@ -49,6 +50,7 @@ export const PaginationStyled = styled.div`
     margin-left: 20px;
   }
   .PageArrowLeft {
+    cursor: pointer;
     margin-right: 35px;
     fill: rgba(130, 130, 130, 1);
     &:hover {
@@ -56,6 +58,7 @@ export const PaginationStyled = styled.div`
     }
   }
   .PageArrowRight {
+    cursor: pointer;
     fill: rgba(130, 130, 130, 1);
     &:hover {
       fill: rgba(166, 25, 46, 0.5);

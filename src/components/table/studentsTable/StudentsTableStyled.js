@@ -25,6 +25,7 @@ export const StudentsTableStyled = styled.div`
     position: relative;
     height: 48px;
   }
+
   .TableData {
     position: relative;
     border: none;
@@ -66,7 +67,11 @@ export const StudentsTableStyled = styled.div`
   }
 
   tbody tr:nth-child(even) {
-    background-color: rgba(242, 242, 242, 1);
+    background-color: #f9f9f9;
+  }
+
+  .TableBodyRow.selectedRow {
+    background-color: #f2f2f2;
   }
 
   /* checkbox */
@@ -97,10 +102,10 @@ export const StudentsTableStyled = styled.div`
     background-size: 50% 50%;
   }
   .checkbox:checked + label::before {
-    border-color: rgba(130, 130, 130, 1);
-    /* background-color: #adb5bd; */
+    /* border-color: rgba(130, 130, 130, 1); */
+    border-color: rgba(0, 0, 0, 1);
     background-color: transparent;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='000000' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='000000' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
   }
 
   /* стили при наведении курсора на checkbox */

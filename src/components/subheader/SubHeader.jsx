@@ -1,5 +1,6 @@
 import React from 'react';
 import IconTriangle from '../iconTriangle/IconTriangle';
+import SubHeaderCollapse from '../subHeaderCollapse/SubHeaderCollapse';
 import { SubHeaderStyled } from './SubHeaderStyled';
 
 const SubHeader = () => {
@@ -14,15 +15,19 @@ const SubHeader = () => {
 
   return (
     <SubHeaderStyled>
-      <ul className="SubNavList">
-        {SubHeaderData.map(data => (
-          <li className="SubNavListItem" key={data.text}>
-            <span className="SubNavText">{data.text}</span>
-            <IconTriangle additionalClassName="nearSubNavText" />
-          </li>
-        ))}
-      </ul>
-      <div className="SubNavClearAllText">Clear All</div>
+      <div className="SubHeaderWrapper">
+        <ul className="SubNavList">
+          {SubHeaderData.map(data => (
+            <li className="SubNavListItem" key={data.text}>
+              <span className="SubNavText">{data.text}</span>
+              <IconTriangle additionalClassName="nearSubNavText" />
+            </li>
+          ))}
+        </ul>
+        <div className="SubNavClearAllText">Clear All</div>
+      </div>
+      {/* {selected && <SubHeaderCollapse />} */}
+      <SubHeaderCollapse />
     </SubHeaderStyled>
   );
 };
