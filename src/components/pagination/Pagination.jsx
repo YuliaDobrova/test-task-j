@@ -5,31 +5,37 @@ import sprite from '../../images/sprite.svg';
 import IconTriangle from '../iconTriangle/IconTriangle';
 import { PaginationStyled } from './PaginationStyled';
 
-
 const options = [
   { value: 5, label: '5' },
   { value: 10, label: '10' },
 ];
+
+const style = {
+  control: base => ({
+    ...base,
+    border: 0,
+    // This line disable the blue border
+    boxShadow: 'none',
+  }),
+};
 
 const Pagination = ({ totalPages, page, onChangePage, limit, setLimit, onOpenPages }) => {
   return (
     <PaginationStyled>
       <p className="PaginationText1">Rows per page:</p>
       <div className="PaginationSelectWrapper">
-        <Select options={options} onChange={({ value }) => setLimit(value)} />
-        {/* <select
-          className="PaginationSelect select-arrow-delete"
-          // value={limit}
-          onChange={value => setLimit(value)}
-          defaultValue="5"
-        >
-          <option value={5} className="PaginationSelectOption">
-            5
-          </option>
-          <option value={10} className="PaginationSelectOption">
-            10
-          </option>
-        </select> */}
+        <Select
+          className="PaginationSelect"
+          options={options}
+          placeholder={limit}
+          styles={style}
+          components={{
+            DropdownIndicator: () => null,
+            IndicatorSeparator: () => null,
+          }}
+          onChange={({ value }) => setLimit(value)}
+        />
+
         <IconTriangle onOpenPages={onOpenPages} additionalClassName="nearPagesSelect" />
       </div>
       <p className="PaginationText2">

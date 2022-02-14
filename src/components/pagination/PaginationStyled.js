@@ -17,18 +17,22 @@ export const PaginationStyled = styled.div`
   }
   .PaginationSelectWrapper {
     position: relative;
+    width: 60px;
   }
   .PaginationSelect {
-    color: rgba(130, 130, 130, 1);
-    width: 50px;
-    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: -8px;
+
+    /* color: rgba(130, 130, 130, 1); */
+    /* border: none; */
+    /* font-family: Rubik; */
+    /* font-size: 14px; */
+  }
+  /* .PaginationSelectOption {
     font-family: Rubik;
     font-size: 14px;
-  }
-  .PaginationSelectOption {
-    font-family: Rubik;
-    font-size: 14px;
-  }
+  } */
   /* ===убрать стрелку у select=== */
   .select-arrow-delete {
     /* for Firefox */

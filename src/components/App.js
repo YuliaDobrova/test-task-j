@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './header/Header';
 import SubHeader from './subheader/SubHeader';
 import Main from './main/Main';
+import Footer from './footer/Footer';
 import './App.css';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
         <Header />
         <SubHeader />
         <Main />
+        <Footer />
       </BrowserRouter>
     </>
   );

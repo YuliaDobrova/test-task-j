@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// fetchStudentsByQuery
 import { fetchStudentsData } from '../../services/Api';
 import useFetching from '../../hooks/useFetching';
 import Loader from '../loader/Loader';
-import Filter from '../filter/Filter';
+import Filter from '../search/Search';
 import ExportButton from '../exportBtn/ExportButton';
 import StudentsTable from '../table/studentsTable/StudentsTable';
 import { StudentsInfoStyled } from './StudentsInfoStyled';

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const FilterStyled = styled.label`
+export const SearchQueryStyled = styled.label`
   position: relative;
-  .FilterQuery {
+  .SearchQuery {
     padding-left: 12px;
     margin-top: 8px;
     width: 499px;

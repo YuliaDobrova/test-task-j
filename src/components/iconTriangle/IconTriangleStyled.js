@@ -18,8 +18,6 @@ export const IconTriangleStyled = styled.div`
   }
   .iconTriangle.nearSubNavText {
     position: static;
-    /* left: 100px; */
-    /* top: 4px; */
     fill: rgba(192, 192, 192, 1);
     width: 10px;
     margin-left: 10px;
@@ -30,7 +28,6 @@ export const IconTriangleStyled = styled.div`
   .iconTriangle.nearParentsText {
     position: absolute;
     left: -10px;
-    /* right: 20px; */
     fill: rgba(192, 192, 192, 1);
     &:hover {
       fill: rgb(166, 25, 46);
@@ -38,9 +35,7 @@ export const IconTriangleStyled = styled.div`
   }
   .iconTriangle.nearPagesSelect {
     position: absolute;
-    /* top: 0; */
-    left: 25px;
-    /* right: 25px; */
+    left: 40px;
     fill: rgba(119, 119, 119, 1);
     &:hover {
       fill: rgb(166, 25, 46);
@@ -49,9 +44,5 @@ export const IconTriangleStyled = styled.div`
   .nearCollapseInfo {
     position: static;
     margin-left: 10px;
-    /* position: absolute; */
-    /* left: 120px; */
-    /* right: ; */
-    /* top: 5px; */
   }
 `;
